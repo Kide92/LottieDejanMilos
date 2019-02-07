@@ -7,18 +7,54 @@
 //
 
 import UIKit
+import Lottie
 
 class ViewController: UIViewController {
+    
+    var button = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        button = UIButton(frame: CGRect(x: 0, y: view.frame.height - 60, width: view.frame.width, height: 60))
+        button.setTitle("Button", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        //button.setTitleColor(UIColor.white, for: .normal)
+        button.backgroundColor = UIColor.blue
+        
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        
+        view.addSubview(button)
+        
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @objc func buttonPressed(){
+        print("Pressed")
+        
+        let animationView = LOTAnimationView()
+        animationView.setAnimation(named: "4127-surfing-poodle")
+        
+        //animationView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        //animationView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        animationView.frame.size.width = 400
+        animationView.frame.size.height = 300
+        
+        animationView.center = view.center
+        
+        self.view.addSubview(animationView)
+    
+        animationView.play { (true) in
+            
+            let viewController = SecondViewController()
+            self.present(viewController, animated: true, completion: nil)
+        }
+        
     }
+    
+    
 
 
 }
