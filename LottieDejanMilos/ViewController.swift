@@ -39,8 +39,8 @@ class ViewController: UIViewController {
         //animationView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         //animationView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
-        animationView.frame.size.width = 400
-        animationView.frame.size.height = 300
+        animationView.frame.size.width = view.frame.width - 20
+        animationView.frame.size.height = animationView.frame.width / 4 * 3
         
         animationView.center = view.center
         
